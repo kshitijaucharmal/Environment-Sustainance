@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap");
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.nav-Left {
+  display: flex;
+  align-items: center;
+}
+
+.logo-container {
+  margin-right: 1rem;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+  padding-left: 1rem;
+}
+
+.logo11 {
+  width: 50px;
+  height: auto;
+  border-radius: 10px;
+  transition: transform 0.3s ease;
+  padding-top: 5px;
+}
+
+.team-name {
+  font-family: "Montserrat bold", sans-serif;
+
+  font-size: 1.5rem;
+  transition: color 0.3s ease, text-shadow 0.3s ease; /* Add transitions for smooth hover effect */
+}
+
+.logo-container:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3); /* Add a subtle box shadow on hover */
+}
+
+.logo:hover {
+  transform: scale(1.1); /* Scale up the logo on hover */
+}
+
+.team-name:hover {
+  color: #1daf2b; /* Change the text color on hover */
+}
+
+.nav-Right {
+  display: flex;
+  align-items: center;
+  padding-right: 2rem;
+}
+
+.nav-Right button {
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Add transition for smooth hover effect */
+}
+
+.nav-Right button {
+  font-size: 1.2rem;
+}
+
+.nav-Right button:hover {
+  background-color: #45a049;
+  transform: scale(1.05); /* Apply subtle scale transformation on hover */
+}
+
+.nav-Right button:active {
+  transform: scale(0.95);
+}

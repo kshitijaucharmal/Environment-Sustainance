@@ -1,0 +1,58 @@
+.parallax {
+  height: 500px; /* Adjust the height as needed */
+  background-attachment: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+
+  background-color: #040c18;
+  background-image: url("../assets/leaves.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.Overl {
+  /* global 94%+ browsers support */
+  width: 50%;
+  height: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.Overl h2 {
+  font-size: 90px;
+  color: #f4f1ec;
+}
+
+.Overl button {
+  margin-top: 20px; /* Add some spacing between the text and button */
+  background-color: #4caf50;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.Overl button {
+  font-size: 2rem;
+}
+
+.Overl button:hover {
+  background-color: #45a049;
+  transform: scale(1.05); /* Apply subtle scale transformation on hover */
+}
+
+.Overl button:active {
+  transform: scale(0.95);
+}
+
+.Overl button:hover {
+  background-color: #4caf50;
+}
