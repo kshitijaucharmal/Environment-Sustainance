@@ -5,6 +5,7 @@ let player,
   bricks,
   score,
   scoreElem,
+  powerupElem,
   wallTop,
   wallBottom,
   wallLeft,
@@ -12,10 +13,13 @@ let player,
   paused = true,
   MAX_SPEED = 7,
   FALL_SPEED = 2,
-  // Probability values
-  powerup_duration = 1000,
+  powerup_duration = 3000,
   powerup_active = false,
   start_time,
+  // Priority values (Add to 10)
+  p_food = 4,
+  p_recycle = 3,
+  p_energy = 3,
   powerups;
 
 function setup() {
@@ -52,6 +56,8 @@ function reset() {
 
   score = 0;
   scoreElem = document.getElementById("score");
+  powerupElem = document.getElementById("powerup");
+  powerupElem.innerText = "None";
 
   createBricks();
   noLoop();
@@ -152,7 +158,7 @@ function DisablePowerups() {
 }
 
 function BallMultiply() {
-  console.log("Recycle");
+  powerupElem.innerText = "Recycle";
   const ball = createSprite(balls[0].position.x, balls[0].position.y, 11, 11);
   ball.shapeColor = balls[0].shapeColor;
   ball.maxSpeed = balls[0].maxSpeed;
@@ -161,12 +167,12 @@ function BallMultiply() {
 }
 
 function LargePaddle() {
-  console.log("Food");
-  player.width *= 1.1;
+  powerupElem.innerText = "Food";
+  player.width *= 1.5;
 }
 
 function SlowBall() {
-  console.log("Energy");
+  powerupElem.innerText = "Energy";
   for (let i = 0; i < balls.length; i++) balls[i].maxSpeed = MAX_SPEED * 0.5;
 }
 
@@ -174,6 +180,7 @@ function onPlayerHitPowerup(player, powerup) {
   if (!powerup_active) {
     start_time = millis();
     powerup_active = true;
+    powerupElem.innerText = "None";
     return;
   }
   switch (powerup.type) {
@@ -196,29 +203,40 @@ function onBallHitBrick(ball, brick) {
   updateScore(10);
   brick.remove();
 
-  const p_food = 2;
-  const p_recycle = 2;
-  const p_energy = 2;
-
   // Water
-  if (random() < 0.1) {
-    if (random() < prob1) {
-      const col = color(100, 100, 255);
-      spawnPowerup("BallMultiply", brick.position, col);
+  if (random() < 0.3) {
+    let objects = [];
+    for (let i = 0; i < p_food; i++) {
+      objects.push("Food");
     }
-    // Fire
-    else if (random() < prob2) {
-      const col = color(252, 102, 0);
-      spawnPowerup("LargePaddle", brick.position, col);
+    for (let i = 0; i < p_energy; i++) {
+      objects.push("Energy");
     }
-    // Land
-    else if (random() < prob3) {
-      const col = color(216, 192, 32);
-      spawnPowerup("SlowBall", brick.position, col);
+    for (let i = 0; i < p_recycle; i++) {
+      objects.push("Recycle");
+    }
+
+    const select = objects[int(random(0, objects.length))];
+    let col = color(100, 100, 100);
+    switch (select) {
+      case "Recycle":
+        col = color(100, 100, 255);
+        spawnPowerup("BallMultiply", brick.position, col);
+        break;
+      case "Food":
+        col = color(252, 102, 0);
+        spawnPowerup("LargePaddle", brick.position, col);
+        break;
+      case "Energy":
+        col = color(216, 192, 32);
+        spawnPowerup("SlowBall", brick.position, col);
+        break;
+
+      default:
+        console.log("Somehing is wrong");
     }
   }
 }
-
 function onBallHitBottom(ball, wall) {
   if (balls.length != 1) {
     ball.remove();

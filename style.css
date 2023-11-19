@@ -33,3 +33,10 @@ canvas {
 #score {
     font-weight: thin;
 }
+.powerup-container {
+    color: #eee;
+    font-weight: bold;
+}
+#powerup {
+    font-weight: thin;
+}
