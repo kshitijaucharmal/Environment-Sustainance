@@ -14,3 +14,14 @@ export default function App() {
     </div>
   );
 }
+
+// Either comment 
+// #<Navbar/>
+// #<Home/>
+
+// or
+
+// #<Navbar/>
+// #<Quiz/>
+
+// to preview what a page looks like
