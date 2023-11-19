@@ -3,11 +3,11 @@
 in /my-homepage/src/App.jsx
 
 Either comment 
-<Navbar/>
-<Home/>
+#<Navbar/>
+#<Home/>
 
 or
-<Navbar/>
-<Quiz/>
+#<Navbar/>
+#<Quiz/>
 
 to preview what it looks like
