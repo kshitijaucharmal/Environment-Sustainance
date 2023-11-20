@@ -3,7 +3,6 @@
 }
 
 html, body {
-    background-color: #292929;
     font: 16px Roboto;
     margin: 0;
     padding: 0;
@@ -16,6 +15,9 @@ body {
     display: grid;
     align-items: center;
     justify-items: center;
+    background-image: url("./leaves.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 canvas {
